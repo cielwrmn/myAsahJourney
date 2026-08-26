@@ -18,7 +18,8 @@ What's in this Repository?
 Status Report:
 ---
 [Ahead of Schedule]
-Tech Class:
+<br>
+Tech Class: <br>
 1. Matriculation Classes: Finished ✅
 2. Belajar Dasar AI: Finished ✅
 3. Belajar Dasar Pemrograman Web: Ongoing ⏱️
@@ -28,7 +29,7 @@ Tech Class:
 7. Belajar Back-End Pemula dengan JavaScript: To Do
 8. Bonus Classes!
 
-ILTs:
+ILTs: <br>
 A. Soft Skill:
 1. Personal Productivity
 2. Growth Mindset and Personal Development
@@ -38,7 +39,7 @@ A. Soft Skill:
 6. Personal Branding and Networking
 7. Interview Preparation
 
-B. Technical:
+B. Technical: <br>
 1. Front-End Basics
 2. Interactive Web
 3. React 101
