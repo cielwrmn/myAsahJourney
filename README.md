@@ -22,17 +22,17 @@ Status Report:
 Tech Class: <br>
 1. Matriculation Classes: Finished ✅
 2. Belajar Dasar AI: Finished ✅
-3. Belajar Dasar Pemrograman Web: Ongoing ⏱️
-4. Belajar Dasar Pemrograman JavaScript: To Do
-5. Belajar Membuat Front-End Web untuk Pemula: To Do
+3. Belajar Dasar Pemrograman Web: Finished ✅
+4. Belajar Dasar Pemrograman JavaScript: Finished ✅
+5. Belajar Membuat Front-End Web untuk Pemula: Ongoing ⏱️
 6. Belajar Membuat Aplikasi Web dengan React: To Do
 7. Belajar Back-End Pemula dengan JavaScript: To Do
 8. Bonus Classes!
 
 ILTs: <br>
 A. Soft Skill:
-1. Personal Productivity
-2. Growth Mindset and Personal Development
+1. Personal Productivity: Finished ✅
+2. Growth Mindset and Personal Development: Finished ✅
 3. Flexing Under Pressure
 4. Innovation and Collaboration'
 5. Business Presentation
@@ -40,7 +40,7 @@ A. Soft Skill:
 7. Interview Preparation
 
 B. Technical: <br>
-1. Front-End Basics
+1. Front-End Basics: Finished ✅
 2. Interactive Web
 3. React 101
 4. Integration with Back-End
