@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Form World</title>
+
+        <style>
+            .contents{
+                border: 2px solid black;
+                padding: 15px;
+
+                position: fixed;
+                top: 50%;
+                left: 50%;
+
+                transform: translate(-50%, -50%);
+            }
+
+            .form-element{
+                margin: 8px;
+                text-align: left;
+            }
+
+            #notifikasiSisaKarakter{
+                visibility: hidden;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="contents">
+            <h2 align="center">Isi Data Diri</h2>
+
+            <div class="formContent">
+                <form id="formDataDiri">
+                    <div class="form-element">
+                        <label for="inputNama">Nama:</label>
+                        <br />
+                        <input type="text" id="inputNama" name="inputNama" placeholder="Nama Anda" required>
+                        <br />
+                    </div>
+
+                    <div class="form-element">
+                        <label for="inputDomisili">Domisili:</label>
+                        <br />
+                        <input type="text" id="inputDomisili" name="domisili" placeholder="Domisili Anda" required>
+                        <br />
+                    </div>
+
+                    <div class="form-element">
+                        <label for="inputKomentar">Komentar:</label>
+                        <br />
+                        <input type="text" id="inputKomentar" name="komentar" placeholder="Komentar Anda" maxlength="100" required>
+                        <br />
+                        <label id="notifikasiSisaKarakter">
+                            Sisa karakter: <span id="sisaKarakter"></span>
+                        </label>
+                    </div>
+
+                    <div class="form-element" id="fieldCopy">
+                        <label for="inputCopy"><i>Copy</i> tulisan ini: </label>
+                        <br />
+                        <input id="inputCopy" type="text" name="copy" value="Sayang Catherine <3" readonly>
+                        <br />
+                    </div>
+
+                    <div class="form-element">
+                        <label for="inputPaste"><i>Paste</i> tulisan di atas ke sini: </label>
+                        <br />
+                        <input id="inputPaste" type="text" name="paste" placeholder="Paste sesuatu di sini">
+                        <br />
+                    </div>
+                    
+                    <div class="form-element" id="fieldCaptcha">
+                        <label for="inputCaptcha">Tulis <i>captcha</i> di bawah ini: </label>
+                        <br />
+                        <img src="https://raw.githubusercontent.com/dicodingacademy/a315-web-pemula-labs/shared-files/captcha.png" alt="Captcha">
+                        <br />
+                        <input id="inputCaptcha" type="text" name="captcha" placeholder="Tulis captcha di sini">
+                        <br />
+                        <p>Tekan Enter pada keyboard jika sudah selesai menulis <i>captcha</i></p>
+                    </div>
+
+                    <div class="form-element">
+                        <input id="submitButton" type="submit" value="Submit Data" disabled/>
+                    </div>
+                        
+                </form>
+            </div>
+
+            <h3 id="messageAfterSubmit"></h3>
+        </div>
+        <script>
+            //when page is loaded 
+            document.addEventListener('DOMContentLoaded', function(){
+                const inputMaxLengthOnLoad = document.getElementById('inputKomentar').maxLength;
+                document.getElementById('sisaKarakter').innerText = inputMaxLengthOnLoad;
+            });
+
+            //events for input komentar
+            document.getElementById('inputKomentar').addEventListener('input', function(){
+                const jumlahKarakterDiketik = document.getElementById('inputKomentar').value.length;
+                const jumlahKarakterMaksimal = document.getElementById('inputKomentar').maxLength;
+
+                console.log('Jumlah karakter diketik: ', jumlahKarakterDiketik);
+                console.log('Jumlah karakter maksimal: ', jumlahKarakterMaksimal);
+                const sisaKarakter = jumlahKarakterMaksimal - jumlahKarakterDiketik;
+                document.getElementById('sisaKarakter').innerText = sisaKarakter.toString();
+
+                if(sisaKarakter === 0){
+                    document.getElementById('sisaKarakter').innerText = 'Batas maksimal tercapai!';
+                } else if (sisaKarakter <= 5){
+                    document.getElementById('notifikasiSisaKarakter').style.color = 'red';
+                } else {
+                    document.getElementById('notifikasiSisaKarakter').style.color = 'black';
+                }
+            });
+
+            //sisa karakter being visible when inputKomentar is focused
+            document.getElementById('inputKomentar').addEventListener('focus', function() {
+                console.log('inputKomentar: focus');
+                document.getElementById('notifikasiSisaKarakter').style.visibility = 'visible';
+            });
+
+            //sisa karakter being hidden when inputKomentar is no longer in focus
+            document.getElementById('inputKomentar').addEventListener('blur', function(){
+                console.log('inputKomentar: blur');
+                document.getElementById('notifikasiSisaKarakter').style.visibility = 'hidden';
+            });
+
+            //copy and paste alerts
+            document.getElementById('inputCopy').addEventListener('copy', function(){
+                alert('Anda telah menyalin sesuatu...');
+                hiddenMessage = 'Anda telah menyalin sesuatu...';
+            });
+
+            document.getElementById('inputPaste').addEventListener('paste', function(){
+                alert('Anda telah menempelkan sesuatu...');
+                hiddenMessage = 'Anda telah menempelkan sesuatu...';
+            });
+
+            //captcha checker
+            document.getElementById('inputCaptcha').addEventListener('change', function(){
+                console.log('inputCaptcha: change');
+
+                const inputCaptcha = document.getElementById('inputCaptcha').value;
+                const submitButtonStatus = document.getElementById('submitButton');
+
+                if(inputCaptcha === 'PRNU'){
+                    submitButtonStatus.removeAttribute('disabled');
+                    console.log('Captcha benar, tombol submit diaktifkan');
+                } else {
+                    submitButtonStatus.setAttribute('disabled', '');
+                }
+            });
+
+            //submit event
+            const submitAction = document.getElementById('formDataDiri');
+
+            submitAction.addEventListener('submit', function(event){
+                const inputNama = document.getElementById('inputNama').value;
+                const inputDomisili = document.getElementById('inputDomisili').value;
+                const hiddenMessage = `Halo, ${inputNama}, bagaimana cuacanya di ${inputDomisili}?`;
+                const inputCaptcha = document.getElementById('inputCaptcha').value;
+
+                console.log(inputCaptcha);
+                if (inputCaptcha === 'PRNU'){
+                    alert('Selamat! Captcha Anda Benar :D');
+                } else {
+                    alert('Captcha Anda Belum Tepat :(');
+                    document.getElementById('inputCaptcha').setAttribute('disabled', '');
+                }
+
+                document.getElementById('messageAfterSubmit').innerText = hiddenMessage;
+                event.preventDefault();
+            });
+        </script>
+    </body>
+</html>
