@@ -48,6 +48,16 @@ B. Technical: <br>
 6. Evolution from REST to AI
 7. Behind the Scenes
 
-
+Mandatory and Non-Mandatory Weekly Things
+---
+MANDATORY <br>
+1. Daily Check-In
+2. ILT Sessions
+<br>
+NON-MANDATORY
+1. Biweekly Feedback
+2. Guest Speakers
+3. Office Hours
+4. Asah Talks
 
 
